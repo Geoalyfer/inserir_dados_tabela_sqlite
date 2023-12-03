@@ -1,0 +1,50 @@
+Escreva as linhas de código através da criação de uma nova query.
+  
+INSERT INTO aluno (nome, dt_criacao) VALUES ('George', '2023-12-03');
+
+Executar ou F9
+
+E os novos dados informados serão inseridos.
+
+Programando a inserçao por transação
+
+BEGIN TRANSACTION 
+execute F9
+
+Insira novos dados na query 
+INSERT INTO aluno (nome, dt_criacao) VALUES ('George', '2023-12-03');
+
+Caso o dado inserido não seja o desejado, utilize o ROLLBACK para corrgir estes dados:
+
+INSERT INTO aluno (nome, dt_criacao) VALUES ('George', '2023-12-03');
+
+ROLLBACK;
+
+E para confirmar que o data está correto, utilize o BEGIN TRANSACTION + COMMIT:
+  
+BEGIN TRANSACTION;
+
+INSERT INTO aluno (nome, dt_criacao) VALUES ('George', '2023-12-03');
+
+COMMIT;
+
+Os dados inseridos serão gravados definitivamente.
+
+A seguir, como se utiliza a mesma função no VSCode:
+
+Copie as linhas de código do SQLite e cole no VSCode.
+  
+import sqlite3
+
+conexao = sqlite3.connect('cursos.db')
+conn = conexao.cursor()
+
+conn.execute("""
+INSERT 
+    INTO aluno (nome, dt_criacao) 
+VALUES ('George', '2023-12-05')          
+""")
+conexao.commit()
+
+  Os novos dados foram inseridos na tabela aluno.
+  
